@@ -128,12 +128,12 @@ map.on('load', async () => {
             return trip;
         },
     );
+    // Compute station traffic (arrivals, departures, totalTraffic)
+    stations = computeStationTraffic(stations, trips);
 
-
-
-
-    
     console.log(stations);
+
+
 
     const radiusScale = d3
         .scaleSqrt()
@@ -205,7 +205,7 @@ function computeStationTraffic(stations, trips) {
 
 
     //add arrivals, departures, totalTraffic properties to each station
-    stations = stations.map((station) => {
+    return stations.map((station) => {
         let id = station.short_name;
 
         station.arrivals = arrivals.get(id) ?? 0;
