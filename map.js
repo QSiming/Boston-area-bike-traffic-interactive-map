@@ -18,6 +18,16 @@ const map = new mapboxgl.Map({
   maxZoom: 18, // Maximum allowed zoom
 });
 
+// select the svg element inside the map container
+const svg = d3.select('#map').select('svg');
+
+function getCoords(station) {
+    const point = new mapboxgl.LngLat(+station.lon, +station.lat);
+    const { x, y } = map.project(point);
+
+    return { cx: x, cy: y };
+}
+
 // Add navigation controls to the map (zoom and rotation)
 map.on('load', async () => {
     // code
@@ -73,7 +83,20 @@ map.on('load', async () => {
     // Extract the stations array from the loaded JSON data
     let stations = jsonData.data.stations;
 
-    console.log('Stations Array:', stations);    
+    console.log('Stations Array:', stations); 
+    
+    
+    // Append circles to the SVG for each station
+    const circles = svg
+    .selectAll('circle')
+    .data(stations)
+    .enter()
+    .append('circle')
+    .attr('r', 5) // Radius of the circle
+    .attr('fill', 'steelblue') // Circle fill color
+    .attr('stroke', 'white') // Circle border color
+    .attr('stroke-width', 1) // Circle border thickness
+    .attr('opacity', 0.8); // Circle opacity
 
 });
 
