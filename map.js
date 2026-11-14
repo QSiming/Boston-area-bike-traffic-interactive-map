@@ -123,8 +123,37 @@ map.on('load', async () => {
     'https://dsc106.com/labs/lab07/data/bluebikes-traffic-2024-03.csv'
     );
 
+    // departures rollup
+    const departures = d3.rollup(
+        trips,
+        (v) => v.length,
+        (d) => d.start_station_id,
+    );
+
+    // arrivals rollup
+    const arrivals = d3.rollup(
+        trips,
+        (v) => v.length,
+        (d) => d.end_station_id,
+    );
 
 
-});
+    //add arrivals, departures, totalTraffic properties to each station
+    stations = stations.map((station) => {
+        let id = station.short_name;
 
+        station.arrivals = arrivals.get(id) ?? 0;
+        station.departures = departures.get(id) ?? 0;
+        station.totalTraffic = station.arrivals + station.departures;
+
+        return station;
+    });
+
+    console.log(stations);
+
+
+
+
+
+};
 
