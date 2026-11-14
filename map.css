@@ -16,7 +16,6 @@ body {
     border-radius: 8px;
 }
 
-
 #map svg {
     position: absolute;
     z-index: 1;
@@ -25,21 +24,7 @@ body {
     pointer-events: none;
 }
 
-#map svg circle {
-    
-    pointer-events: auto;
-    --color-departures: steelblue;
-    --color-arrivals: darkorange;
-
-    --color: color-mix(
-        in oklch,
-        var(--color-departures) calc(100% * var(--departure-ratio)),
-        var(--color-arrivals)
-    );
-
-    fill: var(--color);
-}
-
+/* Shared colors for circles and legend */
 #map circle,
 .legend > div {
     --color-departures: steelblue;
@@ -52,11 +37,13 @@ body {
     );
 }
 
+/* Map circles */
 #map circle {
     fill: var(--color);
     pointer-events: auto;
 }
 
+/* Legend */
 .legend {
     display: flex;
     align-items: center;
