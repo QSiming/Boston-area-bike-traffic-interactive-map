@@ -25,9 +25,7 @@ body {
     pointer-events: none;
 }
 
-svg circle {
-    fill: steelblue;
-    fill-opacity: 0.6;
-    stroke: white;
+#map svg circle {
+    
     pointer-events: auto;
 }
