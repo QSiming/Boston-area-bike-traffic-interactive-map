@@ -169,13 +169,13 @@ map.on('load', async () => {
             anyTimeLabel.style.display = 'none';  // Hide "(any time)"
         }
 
-        // Filter stations based on the selected time
+        updateScatterPlot(timeFilter);
     }
 
     timeSlider.addEventListener('input', updateTimeDisplay);
 
     updateTimeDisplay();
-    
+
     // Initial call to update the scatter plot based on the default time filter
     function updateScatterPlot(timeFilter) {
         const filteredTrips = filterTripsbyTime(trips, timeFilter);
