@@ -59,13 +59,29 @@ body {
 
 .legend {
     display: flex;
-    gap: 1px;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
     margin-block: 1em;
 }
 
+.legend::before {
+    content: "LEGEND:";
+    color: gray;
+    font-weight: 600;
+}
+
 .legend > div {
-    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.legend > div::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
     background: var(--color);
-    padding: 0.5em 2em;
-    text-align: center;
+    display: inline-block;
 }
