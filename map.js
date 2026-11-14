@@ -176,7 +176,7 @@ map.on('load', async () => {
 
     updateTimeDisplay();
 
-    // Initial call to update the scatter plot based on the default time filter
+    // Update the scatter plot based on the selected time filter
     function updateScatterPlot(timeFilter) {
         const filteredTrips = filterTripsbyTime(trips, timeFilter);
 
