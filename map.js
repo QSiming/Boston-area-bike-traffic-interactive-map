@@ -171,7 +171,29 @@ map.on('load', async () => {
                 );
     }); 
 
+    const timeSlider = document.getElementById('time-slider');
+    const selectedTime = document.getElementById('selected-time');
+    const anyTimeLabel = document.getElementById('any-time');
 
+    let timeFilter = -1;
+
+    function updateTimeDisplay() {
+        timeFilter = Number(timeSlider.value);  // Get slider value
+
+        if (timeFilter === -1) {
+            selectedTime.textContent = '';  // Clear time display
+            anyTimeLabel.style.display = 'block';   // Show "(any time)"
+        } else {
+            selectedTime.textContent = formatTime(timeFilter);  // Display formatted time
+            anyTimeLabel.style.display = 'none';  // Hide "(any time)"
+        }
+
+        // Filter stations based on the selected time
+    }
+
+    timeSlider.addEventListener('input', updateTimeDisplay);
+
+    updateTimeDisplay();
 
 
 
