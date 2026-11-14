@@ -40,3 +40,32 @@ body {
     fill: var(--color);
 }
 
+#map circle,
+.legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+}
+
+#map circle {
+    fill: var(--color);
+    pointer-events: auto;
+}
+
+.legend {
+    display: flex;
+    gap: 1px;
+    margin-block: 1em;
+}
+
+.legend > div {
+    flex: 1;
+    background: var(--color);
+    padding: 0.5em 2em;
+    text-align: center;
+}
