@@ -215,3 +215,22 @@ function computeStationTraffic(stations, trips) {
         return station;
     });
 }
+
+function minutesSinceMidnight(date) {
+    return date.getHours() * 60 + date.getMinutes();
+}
+
+function filterTripsbyTime(trips, timeFilter) {
+    return timeFilter === -1
+        ? trips
+        : trips.filter((trip) => {
+            const startedMinutes = minutesSinceMidnight(trip.started_at);
+            const endedMinutes = minutesSinceMidnight(trip.ended_at);
+
+            return (
+                Math.abs(startedMinutes - timeFilter) <= 60 ||
+                Math.abs(endedMinutes - timeFilter) <= 60
+            );
+        });
+}
+
