@@ -175,7 +175,21 @@ map.on('load', async () => {
     timeSlider.addEventListener('input', updateTimeDisplay);
 
     updateTimeDisplay();
+    
+    // Initial call to update the scatter plot based on the default time filter
+    function updateScatterPlot(timeFilter) {
+        const filteredTrips = filterTripsbyTime(trips, timeFilter);
 
+        const filteredStations = computeStationTraffic(
+            stations,
+            filteredTrips
+        );
+
+        circles
+            .data(filteredStations)
+            .join('circle')
+            .attr('r', (d) => radiusScale(d.totalTraffic));
+    }
 
 
 });
@@ -233,4 +247,6 @@ function filterTripsbyTime(trips, timeFilter) {
             );
         });
 }
+
+
 
