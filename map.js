@@ -117,6 +117,14 @@ map.on('load', async () => {
     map.on('resize', updatePositions); // Update on window resize
     map.on('moveend', updatePositions); // Final adjustment after movement ends
 
+
+    // Load the CSV data for bike trips (load the March 2024 Bluebikes traffic CSV)
+    const trips = await d3.csv(
+    'https://dsc106.com/labs/lab07/data/bluebikes-traffic-2024-03.csv'
+    );
+
+
+
 });
 
 
