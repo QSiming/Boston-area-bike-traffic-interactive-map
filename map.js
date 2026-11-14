@@ -97,7 +97,7 @@ map.on('load', async () => {
     .attr('stroke', 'white') // Circle border color
     .attr('stroke-width', 1) // Circle border thickness
     .attr('opacity', 0.8); // Circle opacity
-
+    
 
     // Function to update circle positions when the map moves/zooms
     function updatePositions() {
@@ -149,6 +149,16 @@ map.on('load', async () => {
         return station;
     });
 
+    
+    // Add tooltips to the circles
+    circles.each(function (d) {
+        d3.select(this)
+            .append('title')
+            .text(
+                `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`,
+            );
+    }); 
+
     console.log(stations);
 
     const radiusScale = d3
@@ -157,6 +167,13 @@ map.on('load', async () => {
         .range([0, 25]);
 
     circles.attr('r', (d) => radiusScale(d.totalTraffic));
+
+
+
+
+
+
+
 
 });
 
