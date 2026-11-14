@@ -149,15 +149,8 @@ map.on('load', async () => {
         return station;
     });
 
+
     
-    // Add tooltips to the circles
-    circles.each(function (d) {
-        d3.select(this)
-            .append('title')
-            .text(
-                `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`,
-            );
-    }); 
 
     console.log(stations);
 
@@ -169,7 +162,14 @@ map.on('load', async () => {
     circles.attr('r', (d) => radiusScale(d.totalTraffic));
 
 
-
+    // Add tooltips to the circles
+    circles.each(function (d) {
+            d3.select(this)
+                .append('title')
+                .text(
+                    `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`,
+                );
+    }); 
 
 
 
