@@ -97,9 +97,7 @@ map.on('load', async () => {
     .attr('stroke', 'white') // Circle border color
     .attr('stroke-width', 1) // Circle border thickness
     .attr('opacity', 0.8); // Circle opacity
-    .style('--departure-ratio', (d) =>
-        stationFlow(d.departures / d.totalTraffic),
-    );
+    
 
     // Function to update circle positions when the map moves/zooms
     function updatePositions() {
@@ -196,7 +194,7 @@ map.on('load', async () => {
         circles
             .data(filteredStations, (d) => d.short_name)
             .join('circle')
-            .attr('r', (d) => radiusScale(d.totalTraffic));
+            .attr('r', (d) => radiusScale(d.totalTraffic))
             .style('--departure-ratio', (d) =>
                 stationFlow(d.departures / d.totalTraffic),
             );
