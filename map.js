@@ -177,3 +177,11 @@ map.on('load', async () => {
 
 });
 
+
+// Function to format time in minutes to a human-readable format
+function formatTime(minutes) {
+    const date = new Date(0, 0, 0, 0, minutes);
+    return date.toLocaleString('en-US', { timeStyle: 'short' });
+}
+
+
