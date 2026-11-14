@@ -37,7 +37,7 @@ map.on('load', async () => {
             'line-opacity': 0.6       // Slightly less transparent
             }
     });
-    
+
     // Add a new source for Cambridge bike lanes
     map.addSource('cambridge_route', {
     type: 'geojson',
@@ -49,7 +49,7 @@ map.on('load', async () => {
         type: 'line',
         source: 'cambridge_route',
         paint: {
-            'line-color': '#32D400',
+            'line-color': '#3B82F6',
             'line-width': 5,
             'line-opacity': 0.6
             },
