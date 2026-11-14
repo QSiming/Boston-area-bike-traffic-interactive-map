@@ -70,7 +70,7 @@ map.on('load', async () => {
     let jsonData;
 
     try {
-        const jsonurl = 'https://dsc106.com/labs/lab07/data/bluebikes-stations.json';;
+        const jsonurl = 'https://dsc106.com/labs/lab07/data/bluebikes-stations.json';
 
         // Await JSON fetch
         jsonData = await d3.json(jsonurl);
@@ -97,6 +97,11 @@ map.on('load', async () => {
     .attr('stroke', 'white') // Circle border color
     .attr('stroke-width', 1) // Circle border thickness
     .attr('opacity', 0.8); // Circle opacity
+
+
+
+
+
 
 });
 
