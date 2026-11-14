@@ -89,7 +89,7 @@ map.on('load', async () => {
     // Append circles to the SVG for each station
     const circles = svg
     .selectAll('circle')
-    .data(stations)
+    .data(stations, (d) => d.short_name)
     .enter()
     .append('circle')
     .attr('r', 5) // Radius of the circle
@@ -184,9 +184,15 @@ map.on('load', async () => {
             stations,
             filteredTrips
         );
+        
+        timeFilter === -1
+            ? radiusScale.range([0, 25])
+            : radiusScale.range([3, 50]);
+
+
 
         circles
-            .data(filteredStations)
+            .data(filteredStations, (d) => d.short_name)
             .join('circle')
             .attr('r', (d) => radiusScale(d.totalTraffic));
     }
